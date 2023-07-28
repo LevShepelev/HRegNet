@@ -100,6 +100,8 @@ class KeypointDetector(nn.Module):
             rand_idx = torch.randperm(N)[:self.nsample]
             sampled_xyz = xyz[:,rand_idx,:]
         
+        print("DEBUG: KeypointDetector")
+        print(f"sampled_xyz = {sampled_xyz}")
         grouped_features, knn_xyz = knn_group(sampled_xyz, xyz, features, self.k) # [B,4+C1,M,k] [B,M,k,3]
         embedding = self.convs(grouped_features)
         x1 = torch.max(embedding, dim=1, keepdim=False)[0] # [B,M,k]
@@ -152,7 +154,11 @@ class DescExtractor(nn.Module):
                                    nn.ReLU())
     
     def forward(self, grouped_features, attentive_feature_map):
+        print("DEBUG: DescExtractor")
+        print(f"grouped_features = {grouped_features}")
         x1 = self.convs(grouped_features)
+        print(f"x1 = {x1}")
+        # exit(0)
         x2 = torch.max(x1, dim=3, keepdim=True)[0]
         k = x1.shape[-1]
         x2 = x2.repeat(1,1,1,k)

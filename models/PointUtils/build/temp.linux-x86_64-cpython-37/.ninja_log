@@ -1,0 +1,6 @@
+# ninja log v5
+5	5988	1690181331220056000	/home/jovyan/HRegNet/models/PointUtils/build/temp.linux-x86_64-cpython-37/src/furthest_point_sampling.o	84a73f464204eae2
+6734	25927	1690181351147133000	/home/jovyan/HRegNet/models/PointUtils/build/temp.linux-x86_64-cpython-37/src/point_utils_api.o	d84d90a91b1ebaaa
+5	100063	1690181425281106000	/home/jovyan/HRegNet/models/PointUtils/build/temp.linux-x86_64-cpython-37/src/furthest_point_sampling_gpu.o	84b9434b6551060f
+20	6173	1690318017364059000	/home/jovyan/HRegNet/models/PointUtils/build/temp.linux-x86_64-cpython-37/src/furthest_point_sampling.o	84a73f464204eae2
+21	109861	1690318121033797000	/home/jovyan/HRegNet/models/PointUtils/build/temp.linux-x86_64-cpython-37/src/furthest_point_sampling_gpu.o	e7f4afd0866dbe47

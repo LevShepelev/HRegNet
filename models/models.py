@@ -78,7 +78,7 @@ class HRegNet(nn.Module):
         # Feature extraction
         src_feats = self.feature_extraction(src_points)
         dst_feats = self.feature_extraction(dst_points)
-
+        
         # Coarse registration
         src_xyz_corres_3, src_dst_weights_3 = self.coarse_corres(src_feats['xyz_3'], src_feats['desc_3'], dst_feats['xyz_3'], \
             dst_feats['desc_3'], src_feats['sigmas_3'], dst_feats['sigmas_3'])

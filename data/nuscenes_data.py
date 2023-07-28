@@ -17,7 +17,7 @@ def read_nuscenes_bin_voxel(filename, npoints=None, voxel_size=None):
         npoints: int/None
         voxel_size: int/None
     '''
-    scan = np.fromfile(filename, dtype=np.float32, count=-1).reshape([-1,5])
+    scan = np.fromfile(filename, dtype=np.float32, count=-1).reshape([-1,4])
     scan = scan[:,:3]
 
     if voxel_size is not None:
@@ -54,7 +54,7 @@ class NuscenesDataset(Dataset):
 
         for seq in self.seqs:
             if seq == 'test':
-                data_root = os.path.join(self.root, 'v1.0-test')
+                data_root = os.path.join(self.root)
             else:
                 data_root = os.path.join(self.root, 'v1.0-trainval')
             fn_pair_poses = os.path.join(self.data_list, seq + '.txt')

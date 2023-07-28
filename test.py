@@ -15,7 +15,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description='HRegNet')
 
     parser.add_argument('--seed', type=int, default=1)
-    parser.add_argument('--gpu', type=str, default='1')
+    parser.add_argument('--gpu', type=str, default='0')
     parser.add_argument('--root', type=str, default='')
     parser.add_argument('--npoints', type=int, default=16384)
     parser.add_argument('--dataset', type=str, default='kitti')
@@ -58,6 +58,7 @@ def test(args):
         for idx in range(test_dataset.__len__()):
             start_t = datetime.datetime.now()
             src_points, dst_points, gt_R, gt_t = test_dataset[idx]
+            print(src_points.shape)
             src_points = src_points.unsqueeze(0).cuda()
             dst_points = dst_points.unsqueeze(0).cuda()
             gt_R = gt_R.numpy()
@@ -128,8 +129,9 @@ def test(args):
 
 if __name__ == '__main__':
     args = parse_args()
-
+    print(args.gpu)
     os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
+    print(torch.cuda.is_available())
     set_seed(args.seed)
 
     test(args)
